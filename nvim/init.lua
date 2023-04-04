@@ -11,7 +11,8 @@ require("packer").startup(function(use)
   -- Package manager
   use("wbthomason/packer.nvim")
 
-  use({ -- LSP Configuration & Plugins
+  use({
+    -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     requires = {
       -- Automatically install LSPs to stdpath for neovim
@@ -26,19 +27,22 @@ require("packer").startup(function(use)
     },
   })
 
-  use({ -- Autocompletion
+  use({
+    -- Autocompletion
     "hrsh7th/nvim-cmp",
     requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   })
 
-  use({ -- Highlight, edit, and navigate code
+  use({
+    -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     run = function()
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
   })
 
-  use({ -- Additional text objects via treesitter
+  use({
+    -- Additional text objects via treesitter
     "nvim-treesitter/nvim-treesitter-textobjects",
     after = "nvim-treesitter",
   })
@@ -46,16 +50,16 @@ require("packer").startup(function(use)
   -- Git related plugins
   use("tpope/vim-fugitive")
   use("tpope/vim-rhubarb")
-  use('luk400/vim-jukit')
+  use("luk400/vim-jukit")
   use("lewis6991/gitsigns.nvim")
 
   use("navarasu/onedark.nvim") -- Theme inspired by Atom
   use("sainnhe/gruvbox-material")
 
-  use("nvim-lualine/lualine.nvim") -- Fancier statusline
+  use("nvim-lualine/lualine.nvim")          -- Fancier statusline
   use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
-  use("numToStr/Comment.nvim") -- "gc" to comment visual regions/lines
-  use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
+  use("numToStr/Comment.nvim")              -- "gc" to comment visual regions/lines
+  use("tpope/vim-sleuth")                   -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
@@ -224,8 +228,7 @@ vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { de
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { "c", "lua", "python", "markdown", "cpp", "julia", "fortran", "typescript", "help", "vim" },
-
+  ensure_installed = { "c", "lua", "python", "markdown", "cpp", "julia", "fortran", "typescript", "vim" },
   highlight = { enable = true },
   indent = { enable = true, disable = { "python" } },
   incremental_selection = {
@@ -346,12 +349,12 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  --sumneko_lua = {
+  --  Lua = {
+  --    workspace = { checkThirdParty = false },
+  --    telemetry = { enable = false },
+  --  },
+  --},
 }
 
 -- Configure `ruff-lsp`.
